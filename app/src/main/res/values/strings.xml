@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Patterns Athorfeo</string>
+    <string name="title_default_error_dialog">An error has occurred</string>
+    <string name="message_default_error_dialog">An unexpected error has occurred, please try again.</string>
+    <string name="dismiss_action">Cancel</string>
+    <string name="loading">Loading…</string>
+</resources>
