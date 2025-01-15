@@ -1,6 +1,7 @@
 package io.github.athorfeo.patterns.ui.dashboard
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -22,14 +23,19 @@ fun QuerySearchRoute(
 
     QuerySearchScreen(
         uiLogicState,
-        { }
+        { },
+        {
+            viewModel.onUpdateLoginMethod(LoginMethod.GOOGLE)
+            viewModel.login()
+        }
     )
 }
 
 @Composable
 fun QuerySearchScreen(
     uiLogicState: UiLogicState,
-    onDismissErrorDialog: () -> Unit
+    onDismissErrorDialog: () -> Unit,
+    login: () -> Unit
 ) {
     if (uiLogicState.isLoading) {
         Loading()
@@ -45,6 +51,9 @@ fun QuerySearchScreen(
 
         Column {
             Text("Hello World")
+            Button(onClick = login) {
+                Text("Login")
+            }
         }
     }
 }
@@ -54,6 +63,6 @@ fun QuerySearchScreen(
 fun SearchScreenPreview() {
     ApplicationTheme {
         val uiLogicState = UiLogicState()
-        QuerySearchScreen(uiLogicState, {})
+        QuerySearchScreen(uiLogicState, {}, {})
     }
 }
